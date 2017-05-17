@@ -44,5 +44,6 @@ struct s_node *createList(char **words, int n);
   &  your own other function
   --------------------------------*/
 
+struct s_item *create_new_item(char *word);
 
 #endif

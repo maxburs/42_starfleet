@@ -1,6 +1,6 @@
 #include "header.h"
 #include <string.h> //NULL
-#include <stdio.h> //printf()
+#include <stdio.h> //fputc(), fputs()
 
 static void recursive_step(struct s_node *lst)
 {
