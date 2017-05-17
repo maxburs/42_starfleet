@@ -1,23 +1,30 @@
 #include "header.h"
-
+#include <stdbool.h>
+#include <stdlib.h>
 
 char *precious(int *text, int size)
 {
 	struct s_node *list;
 	char *str;
+	int	i;
 
 	if (NULL == (list = build_list(CS)))
 		return (NULL);
 	if (NULL == (str = malloc(size + 1)))
 	{
-		f
+		free_list(list);
+		return (NULL);
 	}
-	while (size--)
+	i = 0;
+	while (i < size)
 	{
 		list = move(list, *text);
-		putc(list->c, stdout);
+		str[i] = list->c;
+		text++;
+		i++;
 	}
-
+	free_list(list);
+	return (str);
 }
 
 struct s_node *move(struct s_node *list, int move)
@@ -30,64 +37,65 @@ struct s_node *move(struct s_node *list, int move)
 	else if (move < 0)
 	{
 		while (move++)
-			list = list->last;
+			list = list->prev;
 	}
 	return (list);
 }
 
 struct s_node *build_list(char *cs)
 {
-	struct s_node *first_node;
-	struct s_node *current_node;
+	struct s_node *list;
+	struct s_node *new_node;
 
-	if (cs == NULL || *cs == '\0')
-		return (NULL);
-	if (NULL == (fist_node = malloc(sizeof(*first_node))))
-		return (NULL);
-	fist_node->c = *cs;
-	cs++;
-	current_node = first_node;
+	list = NULL;
 	while (*cs)
 	{
-		if (NULL == (current_node->next = malloc(sizeof(*first_node))))
+		if (NULL == (new_node = malloc(sizeof(*new_node))))
 		{
-			free_list_fragrent(first_node);
+			free_list(list);
 			return (NULL);
 		}
-		current_node->next->last = current_node;
-		current_node->next = current_node;
-		current_node->c = *cs;
+		new_node->c = *cs;
+		push_node(&list, new_node);
+		cs++;
 	}
-	current_node->next = first_node;
-	first_node->last = current_node;
+	return (list);
 }
 
-void add_node(struct s_node **list, struct s_node *node)
+void push_node(struct s_node **list, struct s_node *node)
 {
 	if (*list == NULL)
 	{
-
+		node->next = node;
+		node->prev = node;
+		*list = node;
 	}
 	else
 	{
-		node->next = (*list)->next;
-		node->last = (*list);
-		(*list)->next->last = node;
-		(*list)->next = node;
+		node->next = (*list);
+		node->prev = (*list)->prev;
+		(*list)->prev->next = node;
+		(*list)->prev = node;
 	}
 }
 
-void free_list_fragrent(struct s_node *node)
+void free_list(struct s_node *node)
 {
 	struct s_node *node2;
+	struct s_node *start;
 
-	while (node)
+	if (node == NULL)
+		return ;
+	start = node;
+	while (true)
 	{
 		node2 = node->next;
 		free(node);
-		if (NULL == node2)
+		if (node2 == start)
 			break ;
 		node = node2->next;
 		free(node2);
+		if (node == start)
+			break ;
 	}
 }
