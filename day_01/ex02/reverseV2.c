@@ -3,6 +3,7 @@
 #include <stdio.h> //fputc(), fputs()
 #include <stdlib.h> //malloc(), free()
 #include <stdbool.h> //true
+#include <strings.h> //bzero()
 
 /*
 ** for my purposes pop and push will operate on the front of the stack
