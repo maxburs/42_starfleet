@@ -1,0 +1,2 @@
+O((groups)^2) if group sizes are small speed is the same as bubble sort, as group size approaches 1 time approaches 1
+O(1)

@@ -1,0 +1,2 @@
+O(n^2) worse case must go though on average half the list for each element in the list
+O(1)

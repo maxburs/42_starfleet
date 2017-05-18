@@ -4,33 +4,29 @@
 /*--------------------------------
   !! required structure
   --------------------------------*/
-	struct s_stone {
-		int size;
-		struct s_stone *next;
-	};
-
+struct s_player {
+	int   score;
+	char  *name;
+};
 
 /*--------------------------------
   :) function you must implement
   --------------------------------*/
-//stone is a pointer to the first
-void sortStones(struct s_stone **stone);
-
+void insertionSort(struct s_player **players);
 
 /*--------------------------------
   ?? test function used in main
   --------------------------------*/
-struct s_stone *genRandomStoneList(int n);
-void printStone(struct s_stone *stone);
-struct s_stone *createStone(int size);
-void exitWithMsg(char *msg);
-
+struct s_player **genRandomPlayers(int n);
+struct s_player *createRandomPlayer(char *name);
+void printPlayers(struct s_player **players);
 
 /*--------------------------------
   &  your own other function
   --------------------------------*/
 
-void swap(struct s_stone **last, struct s_stone **current, struct s_stone **next);
-struct s_stone **find_next_group(struct s_stone **stone);
+struct s_player **find_end(struct s_player **players);
+void insert(struct s_player **array, struct s_player **player);
+void insert_at(struct s_player **player, struct s_player **new_position);
 
 #endif
