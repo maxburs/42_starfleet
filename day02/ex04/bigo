@@ -1,0 +1,2 @@
+O(n + (sort placements count))
+O(sort placements count)

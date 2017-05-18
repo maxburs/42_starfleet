@@ -1,31 +1,38 @@
 #ifndef HEADER_H
 # define HEADER_H
 
-# include <string.h> //size_t
-
 /*--------------------------------
   !! required structure
   --------------------------------*/
+struct s_node {
+	char		      c;
+	unsigned int	isWord:1;
+	struct        s_node	**child;
+};
+
+struct s_trie {
+	struct s_node *node;
+};
 
 
 /*--------------------------------
   :) function you must implement
   --------------------------------*/
-void countSort(unsigned char *utensils, int n);
+struct s_trie *createTrie(char **dictionary);
+char *understand(char *word, struct s_trie *trie);
 
 
 /*--------------------------------
-  ?? test function used in main
+  ?? test function used in main 
   --------------------------------*/
-unsigned char *genRandomUstensils(int *n);
-void printUtensils(unsigned char *utensils, int n);
+extern char *g_dict[];
+
+char *understandAll(char *sentence, struct s_trie *trie);
+
 
 /*--------------------------------
   &  your own other function
   --------------------------------*/
 
-void get_counts(size_t *counts, unsigned char *utensils, int n);
-void add_previous_counts(size_t *counts);
-void sort_array(size_t *counts, unsigned char *utensils, unsigned char *new_arry, int n);
 
 #endif
