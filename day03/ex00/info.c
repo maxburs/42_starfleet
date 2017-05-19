@@ -12,7 +12,7 @@ struct s_info getInfo(struct s_node *root)
 	info.isBST = true;
 	info.min = root->value ? root->value : 0;
 	info.max = root->value ? root->value : 0;
-	info.height = goes_through_tree(root, &info);
+	info.height = goes_through_tree(root, &info) - 1;
 	return (info);
 }
 
