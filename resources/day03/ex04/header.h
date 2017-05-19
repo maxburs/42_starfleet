@@ -5,24 +5,29 @@
   !! required structure
   --------------------------------*/
 struct s_node {
-	int value;
-	struct s_node *right;
-	struct s_node *left;
+	char		      c;
+	unsigned int	isWord:1;
+	struct        s_node	**child;
+};
+
+struct s_trie {
+	struct s_node *node;
 };
 
 
 /*--------------------------------
   :) function you must implement
   --------------------------------*/
-void insertMonkey(struct s_node **root, struct s_node *monkey);
+struct s_trie *createTrie(char **dictionary);
+char *understand(char *word, struct s_trie *trie);
 
 
 /*--------------------------------
   ?? test function used in main 
   --------------------------------*/
-struct s_node *genMaxHeap(unsigned seed);
-void printBinaryTree(struct s_node *t);
-struct s_node *randomMonkey(void);
+extern char *g_dict[];
+
+char *understandAll(char *sentence, struct s_trie *trie);
 
 
 /*--------------------------------

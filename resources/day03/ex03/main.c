@@ -8,21 +8,37 @@
 
 int main(void)
 {
-	struct s_node *root; 
+	struct s_node *root;
 
-	root = genMinHeap(time(NULL)); //get a min heap
+	root = genMaxHeap(time(NULL)); //get a max heap
 	printBinaryTree(root);
 
 	/*-------------------
 	launch your test here
 	--------------------*/
-
-	// printf("transform the tree to maxHeap...\n");
-	// saveTheSequoia(&root);
-
+	// printf("inserting some monkey\n");
+	// insertMonkey(&root, randomMonkey());
 	// printBinaryTree(root);
 
 	return (0);
+}
+
+
+
+// Function used for the test
+// Don't go further :)
+
+struct s_node *randomMonkey(void)
+{
+	struct s_node *node;
+
+	node = malloc(sizeof(struct s_node));
+	if (!node)
+		return (NULL);
+	node->value = (rand() % 100) + 1;
+	node->left = NULL;
+	node->right = NULL;
+	return (node);
 }
 
 struct s_node *createRandomNode(int currentDepth, int maxDepth, int value, int *max){
@@ -33,7 +49,7 @@ struct s_node *createRandomNode(int currentDepth, int maxDepth, int value, int *
 	node = malloc(sizeof(struct s_node));
 	if (!node)
 		return (NULL);
-	node->value = (rand() % 100) + 1 + value;
+	node->value = value - (rand() % 20) - 1;
 	if (node->value == (*max))
 		node->value += 1;
 	if (node->value > (*max))
@@ -43,7 +59,8 @@ struct s_node *createRandomNode(int currentDepth, int maxDepth, int value, int *
 	return (node);
 }
 
-struct s_node *genMinHeap(unsigned seed){
+struct s_node *genMaxHeap(unsigned seed)
+{
 	int	randomDepth;
 	int	max;
 
@@ -53,7 +70,7 @@ struct s_node *genMinHeap(unsigned seed){
 	//get Depth
 	randomDepth = (rand() % 3) + 2;
 	max = 0;
-	return (createRandomNode(0, randomDepth, 0, &max));
+	return (createRandomNode(0, randomDepth, (rand() % 100) + 50, &max));
 }
 
 struct s_node *make_empty(struct s_node *t)

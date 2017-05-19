@@ -11,12 +11,12 @@ struct s_node {
 };
 
 struct s_info {
-	int min;        // the minimum value in the tree
-	int max;        // the max value in the tree
-	int elements;   // the number of nodes in the tree
-	int height;     // the height of the tree
-	int isBST;      // 0 = FALSE, 1 = TRUE
-	int isBalanced; // 0 = FALSE, 1 = TRUE
+	int min; //the minimum value in the tree
+	int max; //the max value in the tree
+	int elements; //nombre d'elements
+	int depth; //la profondeur de l'arbre
+	int isBST; //0 = TRUE, 1 = FALSE
+	int isBalanced; //0 = TRUE, 1 = FALSE
 };
 
 /*--------------------------------
@@ -26,7 +26,7 @@ struct s_info   getInfo(struct s_node *root);
 
 
 /*--------------------------------
-  ?? test function used in main
+  ?? test function used in main 
   --------------------------------*/
 void printBinaryTree(struct s_node * t); //print a binary tree
 struct s_node *genRandomBinaryTree(unsigned seed); //gen a random binary tree

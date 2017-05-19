@@ -5,21 +5,23 @@
   !! required structure
   --------------------------------*/
 struct s_node {
-	char	*name;
-	struct s_node **children;
+	int value;
+	struct s_node *right;
+	struct s_node *left;
 };
 
 
 /*--------------------------------
   :) function you must implement
   --------------------------------*/
-struct s_node *findParent(struct s_node *root, char *firstSpecies, char *secondSpecies);
+void	saveTheSequoia(struct s_node **root);
 
 
 /*--------------------------------
   ?? test function used in main 
   --------------------------------*/
-struct s_node *getTreeOfLife(void);
+struct s_node *genMinHeap(unsigned seed); //generate a min heap
+void printBinaryTree(struct s_node * t); //print a binary tree
 
 
 /*--------------------------------
@@ -28,4 +30,3 @@ struct s_node *getTreeOfLife(void);
 
 
 #endif
-  

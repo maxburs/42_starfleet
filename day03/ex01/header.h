@@ -5,28 +5,27 @@
   !! required structure
   --------------------------------*/
 struct s_node {
-	int value;
-	struct s_node *right;
-	struct s_node *left;
+	char	*name;
+	struct s_node **children;
 };
 
 
 /*--------------------------------
   :) function you must implement
   --------------------------------*/
-struct s_node *createBST(int *arr, int n);
+struct s_node *findParent(struct s_node *root, char *firstSpecies, char *secondSpecies);
 
 
 /*--------------------------------
   ?? test function used in main 
   --------------------------------*/
-void printBinaryTree(struct s_node * t); //print a binary tree
+struct s_node *getTreeOfLife(void);
 
 
 /*--------------------------------
   &  your own other function
   --------------------------------*/
-int insert(struct s_node *node, int value);
-struct s_node *new_node(int value);
+
 
 #endif
+  

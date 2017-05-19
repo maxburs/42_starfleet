@@ -14,14 +14,15 @@ struct s_node {
 /*--------------------------------
   :) function you must implement
   --------------------------------*/
-void	saveTheSequoia(struct s_node **root);
+void insertMonkey(struct s_node **root, struct s_node *monkey);
 
 
 /*--------------------------------
   ?? test function used in main 
   --------------------------------*/
-struct s_node *genMinHeap(unsigned seed); //generate a min heap
-void printBinaryTree(struct s_node * t); //print a binary tree
+struct s_node *genMaxHeap(unsigned seed);
+void printBinaryTree(struct s_node *t);
+struct s_node *randomMonkey(void);
 
 
 /*--------------------------------

@@ -8,10 +8,9 @@
 
 int main(void)
 {
-	struct s_node *root;
+	struct s_node *root; 
 	struct s_info info;
 
-	memset(&info, 0, sizeof(struct s_info));
 	root = genRandomBinaryTree(time(NULL));
 	printBinaryTree(root);
 
@@ -36,7 +35,7 @@ min: %d\n\
 max: %d\n\
 depth: %d\n\
 this tree is BST? %s\n\
-this tree is Balanced? %s\n", info.elements, info.min, info.max, info.height, (info.isBST) ? "yes" : "no",
+this tree is Balanced? %s\n", info.elements, info.min, info.max, info.depth, (info.isBST) ? "yes" : "no",
 	(info.isBalanced) ? "yes" : "no");
 }
 
@@ -51,9 +50,11 @@ struct s_node *createRandomNode(int currentDepth, int maxDepth){
 	//set the value
 	node->value = rand() % 100;
 
+	usleep(10);
 	//60% of chance to create a new node on the left
 	node->left = (rand() % 100 > 40)  ?  createRandomNode(currentDepth + 1, maxDepth) : NULL;
 
+	usleep(10);
 	//60% of chance to create a new node on the right
 	node->right = (rand() % 100 > 40)  ? createRandomNode(currentDepth + 1, maxDepth) : NULL;
 	return (node);

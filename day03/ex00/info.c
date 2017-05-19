@@ -12,17 +12,17 @@ struct s_info getInfo(struct s_node *root)
 	info.isBST = true;
 	info.min = root->value ? root->value : 0;
 	info.max = root->value ? root->value : 0;
-	info.height = goes_through_tree(root, &info);
+	info.depth = goes_through_tree(root, &info);
 	return (info);
 }
 
 /*
-	returns height
+	returns depth
 */
 int goes_through_tree(struct s_node *node, struct s_info *info)
 {
-	int left_height;
-	int right_height;
+	int left_depth;
+	int right_depth;
 
 	if (node == NULL)
 		return (-1);
@@ -35,9 +35,9 @@ int goes_through_tree(struct s_node *node, struct s_info *info)
 		info->isBST = false;
 	else if (node->right && (node->right->value < node->value))
 		info->isBST = false;
-	left_height = goes_through_tree(node->left, info);
-	right_height = goes_through_tree(node->right, info);
-	if (abs(left_height - right_height) > 1)
+	left_depth = goes_through_tree(node->left, info);
+	right_depth = goes_through_tree(node->right, info);
+	if (abs(left_depth - right_depth) > 1)
 		info->isBalanced = false;
-	return (left_height > right_height ? left_height : right_height) + 1;
+	return (left_depth > right_depth ? left_depth : right_depth) + 1;
 }
