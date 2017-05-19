@@ -26,6 +26,7 @@ void printBinaryTree(struct s_node * t); //print a binary tree
 /*--------------------------------
   &  your own other function
   --------------------------------*/
-
+int insert(struct s_node *node, int value);
+struct s_node *new_node(int value);
 
 #endif
