@@ -12,7 +12,7 @@ struct s_info getInfo(struct s_node *root)
 	info.isBST = true;
 	info.min = root->value ? root->value : 0;
 	info.max = root->value ? root->value : 0;
-	info.height = goes_through_tree(root, &info) - 1;
+	info.height = goes_through_tree(root, &info);
 	return (info);
 }
 
@@ -25,7 +25,7 @@ int goes_through_tree(struct s_node *node, struct s_info *info)
 	int right_height;
 
 	if (node == NULL)
-		return (0);
+		return (-1);
 	if (node->value > info->max)
 		info->max = node->value;
 	else if (node->value < info->min)
