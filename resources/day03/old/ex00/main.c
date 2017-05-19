@@ -2,24 +2,24 @@
 #include <string.h> //memcpy, strlen, ...
 #include <unistd.h> //fork, write, sleep...
 #include <stdlib.h> //malloc, free, exit...
+#include <time.h>
 
 #include "header.h"
 
 int main(void)
 {
-	int len = 10;
-	int *arr = malloc(sizeof(int) * len);
-
-	for (int i = 0; i < len; i++){
-		arr[i] = i + 1;
-	}
-	/*-------------------
-	launch your test here
-	--------------------*/
 	struct s_node *root;
+	struct s_info info;
 
-	root = createBST(arr, len);
+	memset(&info, 0, sizeof(struct s_info));
+	root = genRandomBinaryTree(time(NULL));
 	printBinaryTree(root);
+
+        /*-------------------
+        launch your test here
+        --------------------*/
+	// info = getInfo(root);
+	// printTreeInfo(info);
 
 	return (0);
 }
@@ -28,6 +28,110 @@ int main(void)
 
 // Function used for the test
 // Don't go further :)
+
+void	printTreeInfo(struct s_info info)
+{
+	printf("\n== INFO ==\nelement: %d\n\
+min: %d\n\
+max: %d\n\
+depth: %d\n\
+this tree is BST? %s\n\
+this tree is Balanced? %s\n", info.elements, info.min, info.max, info.height, (info.isBST) ? "yes" : "no",
+	(info.isBalanced) ? "yes" : "no");
+}
+
+struct s_node *createRandomNode(int currentDepth, int maxDepth){
+	struct s_node *node;
+
+	if (currentDepth >= maxDepth)
+		return (NULL);
+	node = malloc(sizeof(struct s_node));
+	if (!node)
+		return (NULL);
+	//set the value
+	node->value = rand() % 100;
+
+	//60% of chance to create a new node on the left
+	node->left = (rand() % 100 > 40)  ?  createRandomNode(currentDepth + 1, maxDepth) : NULL;
+
+	//60% of chance to create a new node on the right
+	node->right = (rand() % 100 > 40)  ? createRandomNode(currentDepth + 1, maxDepth) : NULL;
+	return (node);
+}
+
+struct s_node *createRandomBinaryTree(){
+	int	randomDepth;
+
+	//get Depth
+	randomDepth = (rand() % 6) + 2;
+	return (createRandomNode(0, randomDepth));
+}
+
+struct s_node *addNode(int value){
+	struct s_node *node;
+
+	node = malloc(sizeof(struct s_node));
+	if (!node)
+		return (NULL);
+	node->value = value;
+	node->right = NULL;
+	node->left = NULL;
+	return (node);
+}
+
+int	insertBST(struct s_node *node, int value){
+	if (value < node->value) {
+		if (!node->left) {
+			node->left = addNode(value);
+			return (1);
+		}
+		else {
+			return (insertBST(node->left, value));
+		}
+	}
+	else if (value > node->value) {
+		if (!node->right) {
+			node->right = addNode(value);
+			return (1);
+		}
+		else {
+			return (insertBST(node->right, value));
+		}
+	}
+	return (0);
+}
+
+//side 0 = LEFT, side 1 = right
+struct s_node *createRandomBST(){
+	int randomLength;
+	int randomValue;
+	struct s_node *node;
+
+	randomLength = (rand() % 13) + 1; //13 node max
+	node = addNode((rand() % 30) + 1); //the node value will be between 1 to 30
+	for (int i = 0; i < randomLength; i++){
+		usleep(10);
+		randomValue = (rand() % 30) + 1;
+		insertBST(node, randomValue);
+	}
+	return (node);
+}
+
+struct s_node *genRandomBinaryTree(unsigned seed){
+	int	randomChoice;
+
+	srand(seed);
+
+	randomChoice = (rand() % 100);
+	usleep(5);
+	if (randomChoice > 40){
+		printf("gen a BST\n\n");
+		return (createRandomBST());
+	} else {
+		printf("gen a simple binary tree\n\n");
+		return (createRandomBinaryTree());
+	}
+}
 
 struct s_node *make_empty(struct s_node *t)
 {

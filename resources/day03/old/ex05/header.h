@@ -1,39 +1,38 @@
 #ifndef HEADER_H
 # define HEADER_H
 
-#include <string.h>
-#include <stdbool.h>
-
 /*--------------------------------
   !! required structure
   --------------------------------*/
 struct s_node {
-	int value;
-	struct s_node *right;
-	struct s_node *left;
+	char		      c;
+	unsigned int	isWord:1;
+	struct        s_node	**child;
+};
+
+struct s_trie {
+	struct s_node *node;
 };
 
 
 /*--------------------------------
   :) function you must implement
   --------------------------------*/
-struct s_node *createBST(int *arr, int n);
+struct s_trie *createTrie(char **dictionary);
+char *understand(char *word, struct s_trie *trie);
 
 
 /*--------------------------------
   ?? test function used in main 
   --------------------------------*/
-void printBinaryTree(struct s_node * t); //print a binary tree
+extern char *g_dict[];
+
+char *understandAll(char *sentence, struct s_trie *trie);
 
 
 /*--------------------------------
   &  your own other function
   --------------------------------*/
 
-struct s_node *newNode(int value);
-size_t insertValue(struct s_node **node, int value);
-bool shallowerThan(struct s_node *node, int depth);
-void rotateLeft(struct s_node **node);
-void rotateRight(struct s_node **node);
 
 #endif

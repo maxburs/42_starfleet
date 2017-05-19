@@ -1,9 +1,6 @@
 #ifndef HEADER_H
 # define HEADER_H
 
-#include <string.h>
-#include <stdbool.h>
-
 /*--------------------------------
   !! required structure
   --------------------------------*/
@@ -30,10 +27,5 @@ void printBinaryTree(struct s_node * t); //print a binary tree
   &  your own other function
   --------------------------------*/
 
-struct s_node *newNode(int value);
-size_t insertValue(struct s_node **node, int value);
-bool shallowerThan(struct s_node *node, int depth);
-void rotateLeft(struct s_node **node);
-void rotateRight(struct s_node **node);
 
 #endif
