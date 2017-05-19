@@ -15,7 +15,7 @@ struct s_info {
 	int max;        // the max value in the tree
 	int elements;   // the number of nodes in the tree
 	int height;     // the height of the tree
-	int isBST;      // 0 = FALSE, 1 = TRUE
+	int isBST;      // 0 = FALSE, 1 = TRUE, height balanced?
 	int isBalanced; // 0 = FALSE, 1 = TRUE
 };
 
@@ -36,5 +36,7 @@ void    printTreeInfo(struct s_info info); //print the info from a binary tree
 /*--------------------------------
   &  your own other stuff
   --------------------------------*/
+
+int goes_through_tree(struct s_node *node, struct s_info *info);
 
 #endif
