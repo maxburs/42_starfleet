@@ -5,7 +5,7 @@
 			"name": "C++ Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceRoot}/day01/ex04/queue",
+			"program": "${workspaceRoot}/day03/ex03/a.out",
 			"args": ["hello", "world"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceRoot}",
