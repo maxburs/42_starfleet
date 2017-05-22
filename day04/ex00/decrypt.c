@@ -1,44 +1,17 @@
 #include "header.h"
-#include <stdio.h>
-#include <string.h>
-
-#define BUFF_SIZE 16
-
-/*
-	how are we suppost to change the base withough converting it to a number???
-*/
+#include <string.h> //strlen()
 
 char *getSum(char *a, char *b)
 {
-	char sum[3];
 	int i;
-	int length = strlen(b);
-	int val;
-	int base = 1;
 
-	i = length;
+	i = strlen(b);
 	while (i > 0)
 	{
 		i--;
 		add(b + i, a + i);
 	}
-	memset(sum, '0', sizeof(sum));
-	sum[2] = '\0';
-	i = length - 1;
-	while (i >= 0)
-	{
-		val = (a[i] - '0') * base;
-		sum[0] += val / 10;
-		sum[1] += val % 10;
-		if (sum[1] > '9')
-		{
-			sum[1] -= 10;
-			sum[0]++;
-		}
-		base *= 2;
-		i--;
-	}
-	return (sum[0] == '0' ? strdup(sum + 1) : strdup(sum));
+	return (a);
 }
 
 void add(char *from, char *target)
