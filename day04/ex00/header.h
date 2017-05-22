@@ -21,5 +21,6 @@ int checkBinary(char *str);
   &  your own other function
   --------------------------------*/
 
+void add(char *from, char *target);
 
 #endif
