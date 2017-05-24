@@ -1,18 +1,13 @@
 #include "header.h"
 
-int carPosition(unsigned int parkingRow)
+int rightmostCar(unsigned int parkingRow)
 {
 	int carPosition = 0;
 
 	while (parkingRow)
 	{
 		if (parkingRow & 1)
-		{
-			if (parkingRow ^ 1)
-				return (-1);
-			else
-				return (carPosition);
-		}
+			return (carPosition);
 		carPosition = add(carPosition, 1);
 		parkingRow = parkingRow >> 1;
 	}

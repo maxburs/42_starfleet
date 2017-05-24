@@ -13,9 +13,9 @@ int occupiedPlaces(unsigned int parkingRow)
 	}
 	while (parkingRow)
 	{
-		if (parkingRow & 1)
+		if (parkingRow)
 			result = add(result, 1);
-		parkingRow = parkingRow >> 1;
+		parkingRow = parkingRow & (parkingRow - 1);
 	}
 	return (result);
 }

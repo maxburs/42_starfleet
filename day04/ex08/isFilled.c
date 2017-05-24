@@ -2,12 +2,10 @@
 
 int isFilled(unsigned int parkingRow)
 {
-	if (parkingRow > 1)
-	{
-		if ((1 & parkingRow) ^ 1)
-			return (0);
-	}
-	if (parkingRow)
-		return (isFilled(parkingRow >> 1));
-	return (1);
+	int shift = parkingRow +  1;
+
+	if (parkingRow & shift)
+		return (0);
+	else
+		return (1);
 }
