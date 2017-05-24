@@ -1,6 +1,8 @@
 #ifndef HEADER_H
 # define HEADER_H
 
+#include <limits.h>
+
 /*--------------------------------
   !! required structure
   --------------------------------*/
@@ -31,6 +33,7 @@ void    arrayPrint(struct s_array *arr);
 /*--------------------------------
   &  your own other function
   --------------------------------*/
-
+void recursiveStep(int pizzaSize, int *slices, int step);
+void printSlices(int *slices);
 
 #endif
