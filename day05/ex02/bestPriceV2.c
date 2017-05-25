@@ -13,7 +13,7 @@ double bestPricePair(int pizzaSize, double *prices)
 	double pricePossibility;
 
 	if (pizzaSize > 0)
-		bestPricePair(pizzaSize - 1, prices);
+		prices[pizzaSize - 1] = bestPricePair(pizzaSize - 1, prices);
 	for (int i = 0; i <= pizzaSize; i++, pizzaSize--) {
 		pricePossibility = prices[i] + prices[pizzaSize];
 		if (price < pricePossibility)
