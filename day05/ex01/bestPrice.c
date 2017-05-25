@@ -3,33 +3,20 @@
 #include <string.h> //NULL
 
 double bestPrice(int pizzaSize, double *prices) {
-	int *slices;
+	return (recursiveStep(pizzaSize, prices, pizzaSize));
+}
+
+double recursiveStep(int sizeLeft, double *prices, int sliceSize) {
 	double bestPrice = 0;
+	double newPrice;
 
-	if (NULL == (slices = malloc(sizeof(*slices) * (pizzaSize + 1))))
-		return (-1);
-	recursiveStep(pizzaSize, slices, 0, &bestPrice, prices);
-	free(slices);
+	if (sizeLeft < sliceSize)
+		sliceSize = sizeLeft;
+	while (0 < sliceSize) {
+		newPrice = recursiveStep(sizeLeft - sliceSize, prices, sliceSize) + prices[sliceSize];
+		if (newPrice > bestPrice)
+			bestPrice = newPrice;
+		sliceSize--;
+	}
 	return (bestPrice);
-}
-
-void recursiveStep(int sizeLeft, int *slices, int step, double *bestPrice, double *prices) {
-	slices[step] = 0;
-	if (sizeLeft == 0)
-		comparePrices(slices, bestPrice, prices);
-	while (0 < sizeLeft--) {
-		slices[step]++;
-		recursiveStep(sizeLeft, slices, step + 1, bestPrice, prices);
-	}
-}
-
-void comparePrices(int *slices, double *bestPrice, double *prices) {
-	double price = 0;
-
-	while (*slices) {
-		price += prices[*slices];
-		slices++;
-	}
-	if (*bestPrice < price)
-		*bestPrice = price;
 }

@@ -5,7 +5,7 @@
 			"name": "C++ Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceRoot}/day05/ex02/bestPriceV2",
+			"program": "${workspaceRoot}/day05/ex03/sinkIsland",
 			"args": ["34"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceRoot}",

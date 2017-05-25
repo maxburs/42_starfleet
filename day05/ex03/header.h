@@ -4,28 +4,26 @@
 /*--------------------------------
   !! required structure
   --------------------------------*/
-struct s_prices
-{
-	double *items;
-	int length;
-};
+
 
 /*--------------------------------
   :) function you must implement
   --------------------------------*/
-double bestPrice(int pizzaSize, double *prices);
+void sinkIsland(int **map, int row, int col);
+
 
 /*--------------------------------
   ?? test function used in main 
   --------------------------------*/
 
-// PARSING
+void	printMap(int **map);
 
-struct s_prices *readList();
+//PARSER
+int **readMap(char *filename);
 
 /*--------------------------------
   &  your own other function
   --------------------------------*/
-double recursiveStep(int sizeLeft, double *prices, int sliceSize);
+
 
 #endif
