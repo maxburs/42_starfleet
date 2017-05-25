@@ -3,3 +3,4 @@
 *.dSYM
 *.o
 *.out
+/day06/ex00/strip.txt
