@@ -17,11 +17,10 @@ void recursiveStep(int sizeLeft, int *slices, int step, double *bestPrice, doubl
 	slices[step] = 0;
 	if (sizeLeft == 0)
 		comparePrices(slices, bestPrice, prices);
-	while (0 < sizeLeft--) {
-		slices[step]++;
-		if (sizeLeft < maxSize * 2)
-			maxSize--;
-		recursiveStep(sizeLeft - maxSize, slices, step + 1, bestPrice, prices);
+	while (0 < maxSize--) {
+		slices[step] = maxSize;
+		recursiveStep(sizeLeft - maxSize, slices, step + 1, bestPrice, prices,
+			sizeLeft < maxSize + 1 ? sizeLeft : maxSize);
 	}
 }
 

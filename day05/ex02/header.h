@@ -23,4 +23,5 @@ struct s_prices *readList();
 /*--------------------------------
   &  your own other function
   --------------------------------*/
-
+void recursiveStep(int sizeLeft, int *slices, int step, double *bestPrice, double *prices, int maxSize);
+void comparePrices(int *slices, double *bestPrice, double *prices);
