@@ -1,22 +1,23 @@
 #include "header.h"
 #include <stdlib.h> //malloc(), free()
 #include <string.h> //NULL
+#include <stdio.h>
 
 double optimizedBestPrice(int pizzaSize, double *prices) {
-	return (recursiveStep(pizzaSize, prices, pizzaSize));
+	return (bestPricePair(pizzaSize, prices));
 }
 
-double recursiveStep(int sizeLeft, double *prices, int sliceSize) {
-	double bestPrice = 0;
-	double newPrice;
+double bestPricePair(int pizzaSize, double *prices)
+{
+	double price = 0;
+	double pricePossibility;
 
-	if (sizeLeft < sliceSize)
-		sliceSize = sizeLeft;
-	while (0 < sliceSize) {
-		newPrice = recursiveStep(sizeLeft - sliceSize, prices, sliceSize) + prices[sliceSize];
-		if (newPrice > bestPrice)
-			bestPrice = newPrice;
-		sliceSize--;
+	if (pizzaSize > 0)
+		bestPricePair(pizzaSize - 1, prices);
+	for (int i = 0; i <= pizzaSize; i++, pizzaSize--) {
+		pricePossibility = prices[i] + prices[pizzaSize];
+		if (price < pricePossibility)
+			price = pricePossibility;
 	}
-	return (bestPrice);
+	return (price);
 }

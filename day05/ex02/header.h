@@ -23,4 +23,5 @@ struct s_prices *readList();
 /*--------------------------------
   &  your own other function
   --------------------------------*/
-double recursiveStep(int sizeLeft, double *prices, int maxSize);
+double bestPricePair(int pizzaSize, double *prices);
+
