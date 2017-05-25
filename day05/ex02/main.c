@@ -17,7 +17,7 @@ int main(int ac, char **av)
 	/*-------------------
 	launch your test here
 	--------------------*/
-        // printf("%d : %.2f\n", pizzaSize, optimizedBestPrice(pizzaSize, pricesCont->items));
+        printf("%d : %.2f\n", pizzaSize, optimizedBestPrice(pizzaSize, pricesCont->items));
 
 	return (0);
 }
