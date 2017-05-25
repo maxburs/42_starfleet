@@ -7,7 +7,7 @@
 void printPossibleSlices(int pizzaSize) {
 	int *slices;
 
-	if (NULL == (slices = malloc(sizeof(*slices) * ((unsigned int)INT_MAX + 1))))
+	if (NULL == (slices = malloc(sizeof(*slices) * (pizzaSize + 1))))
 		return ;
 	recursiveStep(pizzaSize, slices, 0);
 	free(slices);
