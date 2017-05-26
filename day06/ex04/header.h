@@ -24,5 +24,7 @@ void printBoard(uint64_t board);
   &  your own other function
   --------------------------------*/
 double findProbability(char x, char y, int moves, double **solutions);
+double **mallocArray(int moves);
+void freeArray(double **array);
 
 #endif
