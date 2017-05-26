@@ -1,0 +1,2 @@
+O(nlog(n)) inserting each element takes log(n) time
+O(1)

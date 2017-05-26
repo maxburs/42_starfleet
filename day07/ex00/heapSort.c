@@ -44,7 +44,7 @@ void siftDown(struct s_art **masterpiece, int n, int element) {
 }
 
 bool isSmaller(struct s_art **masterpiece, int n, int art1, int art2) {
-	return ((art1 >= n || art2 >= n))
+	if (art1 >= n || art2 >= n)
 		return (false);
 	return (strcmp(masterpiece[art1]->name, masterpiece[art2]->name) < 0);
 }
