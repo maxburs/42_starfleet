@@ -44,6 +44,6 @@ struct s_max *maxSlidingWindow(int *arr, int n, int k);
 /*--------------------------------
   &  your own other function
   --------------------------------*/
-
+struct s_max initMax(int n, int k);
 
 #endif
