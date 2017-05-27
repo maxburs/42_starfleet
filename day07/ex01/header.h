@@ -44,6 +44,9 @@ struct s_max *maxSlidingWindow(int *arr, int n, int k);
 /*--------------------------------
   &  your own other function
   --------------------------------*/
-struct s_max initMax(int n, int k);
+struct s_max *initMax(int n, int k);
+struct s_dequeNode *createDequeNode(int value);
+int dequeMaxValue(struct s_deque *deque);
+int arrayMaxValue(int *arr, int n);
 
 #endif
